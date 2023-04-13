@@ -16,6 +16,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended:true}))
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
+app.use(express.static('public'))
 
 
 
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 const plansController = require('./controllers/plans_controller.js')
 app.use('/plans', plansController)
 
-// 404 Page
+//404 Page
 app.get('*', (req, res) => {
   res.send('404')
 })
