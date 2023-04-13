@@ -18,12 +18,10 @@ function show({seeds,index}){
             <h3>{seeds.name}</h3>
 
             <img src={seeds.image} alt={seeds.name}/>
-            
-<form action={`/plans/${index}?_method=DELETE`} method="POST">
-  <input type='submit' value="DELETE"/>
-</form>
-
+            <a href={`/plans/${index}/edit`}><button>Edit</button></a>
             <li><a href='/plans'>Home</a></li>
+        
+
         </Default>
     )
 }

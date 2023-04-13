@@ -2,6 +2,14 @@ const express =require ('express')
 const plans=express.Router()
 const Seed=require('../models/seeds.js')
 // const data=require('../models/models')
+// EDIT
+plans.get('/:indexArray/edit', (req, res) => {
+    res.render('edit', {
+      seeds: Seed[req.params.indexArray],
+      index: req.params.indexArray
+    })
+})
+
 //New
 plans.get('/new', (req, res) => {
     res.render('new')
@@ -26,7 +34,17 @@ plans.get('/:arrayIndex',(req,res)=>{
      }
 
 })
-
+// UPDATE
+plans.put('/:arrayIndex', (req, res) => {
+    if(req.body.hasGluten === 'on'){
+      req.body.hasGluten = true
+    } else {
+      req.body.hasGluten = false
+    }
+    Seed[req.params.arrayIndex] = req.body
+    res.redirect(`/plans/${req.params.arrayIndex}`)
+  })
+  
 // CREATE
 plans.post('/', (req, res) => {
     if (!req.body.image) {
