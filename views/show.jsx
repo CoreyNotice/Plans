@@ -1,7 +1,7 @@
 const React=require('react')
 const Default=require('./layout/default')
 
-function show({seeds}){
+function show({seeds,index}){
     console.log(seeds.name)
     return(
         <Default>
@@ -18,6 +18,11 @@ function show({seeds}){
             <h3>{seeds.name}</h3>
 
             <img src={seeds.image} alt={seeds.name}/>
+            
+<form action={`/plans/${index}?_method=DELETE`} method="POST">
+  <input type='submit' value="DELETE"/>
+</form>
+
             <li><a href='/plans'>Home</a></li>
         </Default>
     )

@@ -1,6 +1,5 @@
 const express =require ('express')
 const plans=express.Router()
-const Plans=require('../models/seeds.js')
 const Seed=require('../models/seeds.js')
 // const data=require('../models/models')
 //New
@@ -19,7 +18,8 @@ plans.get('/', (req, res) => {
 plans.get('/:arrayIndex',(req,res)=>{
      if(Seed[req.params.arrayIndex]){
         res.render('show',{
-            seeds:Seed[req.params.arrayIndex]
+            seeds:Seed[req.params.arrayIndex],
+            index:req.params.arrayIndex,
         })
      }else{
         res.send('404')
@@ -40,6 +40,13 @@ plans.post('/', (req, res) => {
     Bread.push(req.body)
     res.redirect('/plans')
   })
+
+  // DELETE
+plans.delete('/:indexArray', (req, res) => {
+    Seed.splice(req.params.indexArray, 1)
+    res.status(303).redirect('/plans')
+  })
+  
   
   
 
