@@ -22,12 +22,12 @@ function Edit ({seeds,index}) {
             id="image"
             defaultValue={seeds.image}
             />
-          <label htmlFor="hasGluten">Has Gluten?</label>
+          <label htmlFor="free">IS there a cost?</label>
           <input
             type="checkbox"
-            name="hasGluten"
-            id="hasGluten"
-            defaultChecked={seeds.hasGluten}
+            name="free"
+            id="free"
+            defaultChecked={seeds.free}
           />
           <br />
           <input type="submit"/>

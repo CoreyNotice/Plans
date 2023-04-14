@@ -4,15 +4,19 @@ const Seed=require('../models/seeds.js')
 const Data=require('../models/models.js')
 // const data=require('../models/models')
 // EDIT
-plans.get('/:indexArray/edit', (req, res) => {
-    res.render('edit', {
-      seeds: Seed[req.params.indexArray],
-      index: req.params.indexArray
-    })
+plans.get('/', (req, res) => {
+    Data.find()
+        .then(foundData => {
+            res.render('index', {
+                seeds: foundData,
+                title: 'Index Page'
+            })
+        })
 })
+
 plans.get('/seed',(req,res)=>{
   Data.insertMany(Seed)
-  .then(()=>res.send('good'))
+  .then(()=>res.status(303).redirect('/plans'))
   .catch((err) => console.log(err))
 })
 
@@ -29,17 +33,16 @@ plans.get('/', (req, res) => {
     })
 })
 //show
-plans.get('/:arrayIndex',(req,res)=>{
-     if(Seed[req.params.arrayIndex]){
-        res.render('show',{
-            seeds:Seed[req.params.arrayIndex],
-            index:req.params.arrayIndex,
-        })
-     }else{
-        res.send('404')
-     }
-
+plans.get('/:id', (req, res) => {
+  Data.findById(req.params.id)
+      .then(foundData => {
+          res.render('show', {
+              seeds: foundData
+          })
+      })
 })
+
+  
 // UPDATE
 plans.put('/:arrayIndex', (req, res) => {
     if(req.body.hasGluten === 'on'){
@@ -54,14 +57,14 @@ plans.put('/:arrayIndex', (req, res) => {
 // CREATE
 plans.post('/', (req, res) => {
     if (!req.body.image) {
-      req.body.image = 'https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+      req.body.image = undefined
     }
-    if(req.body.hasGluten === 'on') {
-      req.body.hasGluten = true
+    if(req.body.free === 'on') {
+      req.body.free = true
     } else {
-      req.body.hasGluten = false
+      req.body.free = false
     }
-    Bread.push(req.body)
+    Data.push(req.body)
     res.redirect('/plans')
   })
 

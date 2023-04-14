@@ -2,14 +2,14 @@ const React=require('react')
 const Default=require('./layout/default')
 
 function show({seeds,index}){
-    console.log(seeds.name)
+    console.log(seeds.city)
     return(
         <Default>
             <h2>Show Page</h2>
             <p>
                 this is the thing
                 {
-                    seeds.hasGluten
+                    seeds.free
                     ?<span>does</span>
                     :<span>does Not</span>
                 }
@@ -17,7 +17,7 @@ function show({seeds,index}){
             </p>
             <h3>{seeds.name}</h3>
 
-            <img src={seeds.image} alt={seeds.name}/>
+            <img src={seeds.image} alt={seeds.city}/>
             <a href={`/plans/${index}/edit`}><button>Edit</button></a>
             <li><a href='/plans'>Home</a></li>
         
