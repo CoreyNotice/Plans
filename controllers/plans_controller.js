@@ -1,6 +1,7 @@
 const express =require ('express')
 const plans=express.Router()
 const Seed=require('../models/seeds.js')
+const Data=require('../models/models.js')
 // const data=require('../models/models')
 // EDIT
 plans.get('/:indexArray/edit', (req, res) => {
@@ -8,6 +9,11 @@ plans.get('/:indexArray/edit', (req, res) => {
       seeds: Seed[req.params.indexArray],
       index: req.params.indexArray
     })
+})
+plans.get('/seed',(req,res)=>{
+  Data.insertMany(Seed)
+  .then(()=>res.send('good'))
+  .catch((err) => console.log(err))
 })
 
 //New

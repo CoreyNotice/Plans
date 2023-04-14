@@ -4,11 +4,14 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 
 
+
 // CONFIGURATION
 require('dotenv').config()
 const PORT = process.env.PORT
 const app = express()
 
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => { console.log('connected to mongo: ', process.env.MONGO_URI) })
 // MIDDLEWARE
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
@@ -39,9 +42,7 @@ app.get('*', (req, res) => {
 
 
 
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(() => { console.log('connected to mongo: ', process.env.MONGO_URI) })
-.catch((error) => { console.log(error) });
+
 
 
 // LISTEN

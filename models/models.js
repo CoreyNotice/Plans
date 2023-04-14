@@ -1,19 +1,23 @@
 // require mongoose 
 const mongoose = require('mongoose')
 // creating shorthand for the Schema constructor 
-const { Schema } = mongoose 
+const { Schema } = mongoose
 
-const planSchema = new Schema({
-    firstName: { type: String, required:true,uniqueCaseInsensitive: true },
-    lastName: { type: String, required:true,uniqueCaseInsensitive: true },
-    todo: { type: String,uniqueCaseInsensitive: true },
-   todoone: { type: String, required:true,uniqueCaseInsensitive: true  },
-   todotwo: { type: String,uniqueCaseInsensitive: true },
-   todothree: { type: String,uniqueCaseInsensitive: true },
-   todofour: { type: String,uniqueCaseInsensitive: true }
+const seedSchema = new Schema({
+    name: { type: String, required:true,uniqueCaseInsensitive: true },
+    city: { type: String, required:true,uniqueCaseInsensitive: true },
+    state: { type: String,uniqueCaseInsensitive: true },
+   street_address: { type: String, required:true,uniqueCaseInsensitive: true  },
+   about: { type: String,uniqueCaseInsensitive: true },
+   image: { type: String,uniqueCaseInsensitive: true },
+   free:{type:Boolean},
+   date:{type:Date},
+   time:{type:String}
+
+
   
 })
 
-const Plans = mongoose.model('Plans', planSchema)
+const Data = mongoose.model('Data', seedSchema)
 
-module.exports = Plans
+module.exports = Data
