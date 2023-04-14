@@ -64,7 +64,7 @@ plans.post('/', (req, res) => {
     } else {
       req.body.free = false
     }
-    Data.push(req.body)
+    Data.create(req.body)
     res.redirect('/plans')
   })
 

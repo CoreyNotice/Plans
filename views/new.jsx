@@ -15,17 +15,46 @@ function New () {
             id="name"
             required
           />
+           <label htmlFor="city">City</label>
+          <input
+            type="text"
+            name="city"
+            id="city"
+            required
+          />
+            <label htmlFor="street_address">street_address:</label>
+          <input
+            type="text"
+            name="street_address"
+            id="street_address"
+            required
+          />
+            <label htmlFor="about">about:</label>
+          <input
+            type="text"
+            name="about"
+            id="about"
+            required
+          />
+     
           <label htmlFor="image">Image</label>
           <input
             type="text"
             name="image"
             id="image"/>
-          <label htmlFor="hasGluten">Has Gluten?</label>
+          <label htmlFor="Free">Free?</label>
           <input
             type="checkbox"
-            name="hasGluten"
-            id="hasGluten"
+            name="free"
+            id="free"
             defaultChecked
+          />
+                 <label htmlFor="time:">time:</label>
+          <input
+            type="text"
+            name="time"
+            id="time"
+            required
           />
           <br />
           <input type="submit"/>

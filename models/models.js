@@ -4,15 +4,15 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const seedSchema = new Schema({
-    name: { type: String, required:true,uniqueCaseInsensitive: true },
-    city: { type: String, required:true,uniqueCaseInsensitive: true },
+    name: { type: String,uniqueCaseInsensitive: true },
+    city: { type: String,uniqueCaseInsensitive: true },
     state: { type: String,uniqueCaseInsensitive: true },
-   street_address: { type: String, required:true,uniqueCaseInsensitive: true  },
+   street_address: { type: String,uniqueCaseInsensitive: true  },
    about: { type: String,uniqueCaseInsensitive: true },
    image: { type: String,uniqueCaseInsensitive: true },
-   free:{type:Boolean},
-   date:{type:Date},
-   time:{type:String}
+   free:{type:Boolean,uniqueCaseInsensitive: true},
+   date:{type:Date,uniqueCaseInsensitive: true},
+   time:{type:String,uniqueCaseInsensitive: true}
 
 
   
