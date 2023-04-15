@@ -1,11 +1,23 @@
 body {
-    background-color: rgb(240, 255, 254);
+    background-color: #0AFE01;
+    font-family: 'Merriweather', serif;
+
   }
   
   img {
     width: 25%;
     display: block;
     margin: auto;
+   
   }
   
-  
+  header{
+    background: #FE010A;
+  }
+  ul{
+    list-style-type: none;
+}
+*{
+  color:#010AFE;
+
+}

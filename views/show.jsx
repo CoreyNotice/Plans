@@ -1,28 +1,40 @@
 const React=require('react')
 const Default=require('./layout/default')
 
-function show({seeds,index}){
+function show({seeds,title}){
     console.log(seeds.city)
     return(
-        <Default>
-            <h2>Show Page</h2>
-            <p>
-                this is the thing
+ <Default title={title}>
+              <h2>{seeds.name}</h2>
+           <br/>
+           <aside> <img src={seeds.image} alt={seeds.city}/>
+           </aside>
+           <br/>
+             <p>
+                {seeds.about}<br/>
+                {seeds.street_address}  <br/>
+             <br/>
+                starts {seeds.time}
+             </p>
+           <br/>
+           <p>
+                Cost to enter:
                 {
                     seeds.free
-                    ?<span>does</span>
-                    :<span>does Not</span>
-                }
-                you get it?
+                    ?<span>this is a free event</span>
+                    :<span>See cover charge in about section</span>
+                }    
             </p>
-            <h3>{seeds.name}</h3>
+                      <a href={`/plans/${seeds.id}/edit`}><button type="button" class="btn btn-outline-danger">Edit</button></a>
+    
+                      <form action={`/plans/${seeds.id}?_method=DELETE`} method="POST">
+                             <input class='p-3 mb-2 bg-danger text-white ' type='submit' value="DELETE"/>
+                               </form>
 
-            <img src={seeds.image} alt={seeds.city}/>
-            <a href={`/plans/${index}/edit`}><button>Edit</button></a>
-            <li><a href='/plans'>Home</a></li>
+                                  
         
 
-        </Default>
+</Default>
     )
 }
 

@@ -4,54 +4,70 @@ const Seed=require('../models/seeds.js')
 const Data=require('../models/models.js')
 // const data=require('../models/models')
 // EDIT
-plans.get('/', (req, res) => {
-    Data.find()
+plans.get('/:id/edit', (req, res) => {
+    Data.findById(req.params.id)
         .then(foundData => {
-            res.render('index', {
+            res.render('edit', {
                 seeds: foundData,
-                title: 'Index Page'
+                title: 'Edit Event'
             })
         })
 })
-
 plans.get('/seed',(req,res)=>{
   Data.insertMany(Seed)
-  .then(()=>res.status(303).redirect('/plans'))
-  .catch((err) => console.log(err))
+    .then((done) => {
+      console.log(done);
+      res.status(303).redirect('/plans');
+    })
+    .catch((err) => console.log(err))
 })
 
 //New
 plans.get('/new', (req, res) => {
-    res.render('new')
+    res.render('new',{
+      title:'New Event'
+    })
 })
-// INDEX
+// home
 plans.get('/', (req, res) => {
-    res.render('index',
+  Data.find()
+  .then(foundData=>{
+    res.render('home',
     {
-      seeds:Seed,
-      title:"This is the index page"
+      seeds:foundData,
+      title:"Plan it Out"
+  })
+    
     })
 })
 //show
 plans.get('/:id', (req, res) => {
   Data.findById(req.params.id)
-      .then(foundData => {
-          res.render('show', {
-              seeds: foundData
-          })
+    .then(foundBread => {
+      res.render('show', {
+        seeds: foundBread,
+        title:'Plan it Out'
+      
       })
+    })
+    .catch(err => {
+      res.send('404')
+    })
 })
 
   
 // UPDATE
-plans.put('/:arrayIndex', (req, res) => {
-    if(req.body.hasGluten === 'on'){
-      req.body.hasGluten = true
+plans.put('/:id', (req, res) => {
+    if(req.body.free === 'on'){
+      req.body.free = true
     } else {
-      req.body.hasGluten = false
+      req.body.free = false
     }
-    Seed[req.params.arrayIndex] = req.body
-    res.redirect(`/plans/${req.params.arrayIndex}`)
+    Data.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then(updatedData=>{
+      console.log(updatedData)
+    res.redirect(`/plans/${req.params.id}`)
+  })
   })
   
 // CREATE
@@ -69,9 +85,11 @@ plans.post('/', (req, res) => {
   })
 
   // DELETE
-plans.delete('/:indexArray', (req, res) => {
-    Seed.splice(req.params.indexArray, 1)
-    res.status(303).redirect('/plans')
+plans.delete('/:id', (req, res) => {
+    Data.findByIdAndDelete(req.params.id)
+    .then(deletedData=>{
+      res.status(303).redirect('/plans')
+    })
   })
   
   

@@ -2,10 +2,11 @@ const React = require('react')
 const Default = require('./layout/default')
 
 
-function New () {
+function New ({title}) {
     return (
-      <Default>
+      <Default title={title}>
         <h2>Add a new bread</h2>
+    
         <form action="/plans" method="POST">
 
           <label htmlFor="name">Name</label>
@@ -20,6 +21,13 @@ function New () {
             type="text"
             name="city"
             id="city"
+            required
+          />
+           <label htmlFor="state">state</label>
+          <input
+            type="text"
+            name="state"
+            id="state"
             required
           />
             <label htmlFor="street_address">street_address:</label>
@@ -42,12 +50,25 @@ function New () {
             type="text"
             name="image"
             id="image"/>
-          <label htmlFor="Free">Free?</label>
+            <div class='form-check '>
+          <label class="form-check-label" for="Free">Free?</label>
+          <br/>
           <input
-            type="checkbox"
+            type="radio"
             name="free"
-            id="free"
-            defaultChecked
+            class="form-check-input "
+            id="radio"
+            value="option1" 
+            
+          />
+          </div>
+          <br/>
+                   <label htmlFor="date:">date:</label>
+          <input
+            type="text"
+            name="date"
+            id="date"
+            required
           />
                  <label htmlFor="time:">time:</label>
           <input
@@ -59,9 +80,6 @@ function New () {
           <br />
           <input type="submit"/>
         </form>
-        <div className="backButton">
-  <a href="/plans"><button>homex</button></a>
-</div>
 
       </Default>
     )
