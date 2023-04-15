@@ -13,7 +13,7 @@ function Default(html) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet"/>
       </head>
-      <body>
+      <body >
          <header>
             <h2 >
               <a class="text-primary" href="/plans">Plan it Out</a></h2>
@@ -28,8 +28,9 @@ function Default(html) {
           </div>
        
       <footer class="text-right"><small class="text-right">Developed and Desgin by Corey Notice</small></footer>
-        
+   
       </body>
+  
       </html>
     )
   }
