@@ -27,7 +27,7 @@ function Default(html) {
             {html.children}
           </div>
        
-      
+      <footer class="text-right"><small class="text-right">Developed and Desgin by Corey Notice</small></footer>
         
       </body>
       </html>

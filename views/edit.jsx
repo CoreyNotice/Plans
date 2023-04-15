@@ -7,61 +7,71 @@ function Edit ({seeds,title}) {
         <h2>Edit a bread</h2>
         <form action={`/plans/${seeds.id}?_method=PUT`} method="POST">
 
-        <label htmlFor="name">Name</label>
+        <label for="name">Name</label>
           <input
             type="text"
             name="name"
             id="name"
         
           />
-           <label htmlFor="city">City</label>
+           <label for="city">City</label>
           <input
             type="text"
             name="city"
             id="city"
           
           />
-              <label htmlFor="state">state</label>
+              <label for="state">state</label>
           <input
             type="text"
             name="state"
             id="state"
           
           />
-            <label htmlFor="street_address">street_address:</label>
+            <label for="street_address">street_address:</label>
           <input
             type="text"
             name="street_address"
        
           />
-            <label htmlFor="about">about:</label>
-          <input
+            <div class='form-group'>
+            <label for="about">about:</label>
+          <textarea
+            class="form-control"
+            row="10"
             type="text"
             name="about"
             id="about"
-         
+            required
           />
+          </div>
      
-          <label htmlFor="image">Image</label>
+          <label for="image">Image</label>
           <input
             type="text"
             name="image"
             id="image"/>
-          <label htmlFor="Free">Free?</label>
+           
+           <div class='form-check'>
+          <label class="form-check-label" for="Free">Free?</label>
+          <br/>
           <input
-            type="checkbox"
+            type="radio"
             name="free"
-            id="free"
-            defaultChecked
-          />
-              <label htmlFor="date:">date:</label>
+            class="form-check-input "
+            id="radio"
+          
+            
+          /><br/>
+          </div>
+              <label for="date:">date:</label>
           <input
             type="text"
             name="date"
             id="date"
      
           />
-                 <label htmlFor="time:">time:</label>
+                 <label for="time:">time:</label>
           <input
             type="text"
             name="time"
@@ -71,7 +81,7 @@ function Edit ({seeds,title}) {
           <br />   
         
           <br />
-          <input type="submit"/>
+          <input class='bg-primary text-white '  type="submit"/>
         </form>
       </Default>
     )
